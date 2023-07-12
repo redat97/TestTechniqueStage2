@@ -1,6 +1,6 @@
 - name: Login to Azure Container Registry
   uses: docker/login-action@v1
   with:
-    registry: myContainerRegistry.azurecr.io
+    registry: testtechnique.azurecr.io
     username: ${{ secrets.ACR_USERNAME }}
     password: ${{ secrets.ACR_PASSWORD }}
