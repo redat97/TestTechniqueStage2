@@ -10,6 +10,9 @@ RUN git clone https://github.com/ankane/pgvector.git \
     && make \
     && make install
 
-COPY 00_create_database.sql /docker-entrypoint-initdb.d/
-COPY 01_create_user.sql /docker-entrypoint-initdb.d/
-COPY 02_grant_privileges.sql /docker-entrypoint-initdb.d/
+RUN echo "listen_addresses='*'" >> /var/lib/postgresql/data/postgresql.conf
+RUN echo "host all all 0.0.0.0/0 md5" >> /var/lib/postgresql/data/pg_hba.conf
+
+
+
+COPY init.sql /docker-entrypoint-initdb.d/
